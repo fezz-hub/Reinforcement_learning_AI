@@ -5,7 +5,7 @@ from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
 
-# ── Hyperparameters ───────────────────────────────────────────────────────────
+# Hyperparameters 
 
 EPSILON   = 0.1
 GAMMA     = 0.99
@@ -140,7 +140,7 @@ for i in range(RUNS):
     seed = SEED_BASE + i
     returns = run_qlearning(seed)
     ql_runs.append(returns)
-    print(f"  ✓ Q-Learning run {i+1}/{RUNS} complete (seed={seed}, "
+    print(f"Q-Learning run {i+1}/{RUNS} complete (seed={seed}, "
           f"final return={returns[-100:].mean():.1f})")
 
 ql_runs = np.array(ql_runs)
@@ -154,7 +154,7 @@ for i in range(RUNS):
     seed = SEED_BASE + i + 100  # Different seeds to avoid correlation
     returns = run_sarsa(seed)
     sarsa_runs.append(returns)
-    print(f"  ✓ SARSA run {i+1}/{RUNS} complete (seed={seed}, "
+    print(f"SARSA run {i+1}/{RUNS} complete (seed={seed}, "
           f"final return={returns[-100:].mean():.1f})")
 
 sarsa_runs = np.array(sarsa_runs)
@@ -286,6 +286,6 @@ print(f"\nStatistical Significance (paired t-test, last 100 eps):")
 print(f"  t-statistic: {t_stat:.3f}")
 print(f"  p-value: {p_value:.4f}")
 if p_value < 0.05:
-    print(f"  ✓ Difference is statistically significant (p < 0.05)")
+    print(f"Difference is statistically significant (p < 0.05)")
 else:
-    print(f"  ✗ Difference is NOT statistically significant (p ≥ 0.05)")
+    print(f"Difference is NOT statistically significant (p ≥ 0.05)")
